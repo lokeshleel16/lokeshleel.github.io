@@ -3,18 +3,388 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case Study 01 — Lokesh Leel</title>
-  <meta name="description" content="Case study placeholder page for Lokesh Leel's portfolio." />
+  <title>Competitor Analysis: Job Search Industry — Lokesh Leel</title>
+  <meta name="description" content="Strategic competitor analysis for Jobs.co in the job-tech industry, identifying key competitor Naukri.com." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
+  <style>
+    /* Premium Page-Specific Styling */
+    .case-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+      margin: var(--space-md) 0 var(--space-lg);
+      padding: var(--space-sm) 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    @media (min-width: 560px) {
+      .meta-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .meta-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+    
+    .meta-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .action-row {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .case-section {
+      padding: 1.5rem 0;
+      margin-bottom: 0;
+    }
+
+    .case-section h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-top: 0;
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .case-section h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 1.2em;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .case-section h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: var(--space-md);
+      margin-bottom: 0.5rem;
+    }
+
+    .case-section p {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Collapsible Problem Statement Toggle */
+    .toggle-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin: var(--space-md) 0;
+      overflow: hidden;
+    }
+
+    .toggle-header {
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-hover);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .toggle-header svg {
+      transition: transform 0.22s ease;
+    }
+
+    .toggle-container.active .toggle-header svg {
+      transform: rotate(180deg);
+    }
+
+    .toggle-content {
+      padding: 0 var(--space-md);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out, padding 0.25s ease-out;
+    }
+
+    .toggle-container.active .toggle-content {
+      padding: var(--space-md);
+      max-height: 500px;
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: var(--space-sm) var(--space-md);
+      margin: var(--space-md) 0;
+    }
+
+    .highlight-box p {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .grid-3col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+
+    @media (min-width: 600px) {
+      .grid-3col {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm) var(--space-md);
+      text-align: center;
+    }
+
+    .metric-val {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+    }
+
+    .metric-lbl {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .case-img-wrapper {
+      margin: var(--space-md) 0 var(--space-lg);
+      text-align: center;
+    }
+
+    .case-img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .case-img:hover {
+      transform: scale(1.01);
+      border-color: rgba(108, 99, 255, 0.6);
+    }
+
+    .case-caption {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: var(--space-xs);
+      font-style: italic;
+    }
+
+    .bullet-list, .numbered-list {
+      margin: var(--space-sm) 0 var(--space-md) var(--space-md);
+      color: var(--text-secondary);
+    }
+
+    .bullet-list li, .numbered-list li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+      font-size: 1.02rem;
+    }
+
+    .bullet-list strong, .numbered-list strong {
+      color: var(--text-primary);
+    }
+
+    .swot-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+
+    @media (min-width: 600px) {
+      .swot-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .swot-card {
+      padding: var(--space-md);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .swot-s { border-top: 4px solid #10b981; }
+    .swot-w { border-top: 4px solid #f59e0b; }
+    .swot-o { border-top: 4px solid #3b82f6; }
+    .swot-t { border-top: 4px solid #ef4444; }
+
+    .swot-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .swot-card ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .swot-card li {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .swot-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* Bookmark Card styling for infoedge bookmark */
+    .bookmark-card {
+      display: flex;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm) var(--space-md);
+      text-decoration: none;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition), border-color var(--transition);
+      margin: var(--space-sm) 0 var(--space-md);
+    }
+
+    .bookmark-card:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+    }
+
+    .bookmark-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bookmark-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .bookmark-url {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .bookmark-icon {
+      color: var(--accent);
+    }
+
+    /* Fixed Back Button Hover */
+    .back-btn {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color var(--transition);
+    }
+    .back-btn:hover {
+      color: var(--text-primary);
+    }
+  </style>
 </head>
 <body>
   
   <header style="padding: var(--space-md) 0; border-bottom: 1px solid var(--border);">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; transition: color var(--transition);" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
+    <div class="case-container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="/" class="back-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 1px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         Back to Home
       </a>
@@ -22,35 +392,333 @@
     </div>
   </header>
 
-  <main style="padding: var(--space-xl) 0 0 0;">
-    <div class="container">
-      <div class="fade-up">
-        <span class="hero-tag">Case Study 01</span>
-      </div>
-      <h1 class="fade-up" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--space-sm);">
-        Case Study Title One
+
+
+  <main style="padding: var(--space-md) 0 var(--space-xl);">
+    <div class="case-container">
+      
+      <!-- HERO SECTION -->
+      <h1 class="fade-up" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+        Competitor Analysis: Jobs Search Industry
       </h1>
-      <p class="fade-up" style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: var(--space-lg); max-width: 580px;">
-        A detailed write-up about the problem, approach, and key outcomes of this case study.
+      <p class="fade-up" style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: var(--space-md); max-width: 720px; line-height: 1.6;">
+        Identifying one competitor in the Job Search market in India and performing a complete, end-to-end strategic product analysis.
       </p>
 
-      <div class="fade-up" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-xl) var(--space-md); text-align: center; margin-bottom: var(--space-xl);">
-        <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(108, 99, 255, 0.2); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <!-- METADATA -->
+      <div class="meta-grid fade-up">
+        <div class="meta-item">
+          <span class="meta-label">Client Focus</span>
+          <span class="meta-value">Jobs.co Startup</span>
         </div>
-        <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">Under Construction</h2>
-        <p style="color: var(--text-secondary); font-size: 0.9rem; max-width: 360px; margin: 0 auto 1.5rem;">
-          We are currently preparing this case study. Check back soon for the full breakdown!
-        </p>
-        <a href="/" style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--accent); text-decoration: none; transition: opacity var(--transition);" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-          Return to home page →
+        <div class="meta-item">
+          <span class="meta-label">Category</span>
+          <span class="meta-value">Project Work</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Timeline</span>
+          <span class="meta-value">June 2024</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Deliverable</span>
+          <span class="meta-value">Competitor Analysis</span>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="action-row fade-up">
+        <a href="https://www.figma.com/design/6rRE8VBGvkkO3et4wo5ueS/Competitor-Analysis---Job-Search-Industry?m=auto&t=rfUlUzJMBhLedHFC-6" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <!-- Figma Logo Icon -->
+          <svg width="14" height="20" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+            <path d="M19 0C8.5 0 0 8.5 0 19C0 24.3 2.2 29.1 5.8 32.5C2.2 35.9 0 40.7 0 46C0 56.5 8.5 65 19 65C24.3 65 29.1 62.8 32.5 59.2C35.9 62.8 40.7 65 46 65C56.5 65 65 56.5 65 46C65 40.7 62.8 35.9 59.2 32.5C62.8 29.1 65 24.3 65 19C65 8.5 56.5 0 46 0H19Z" fill="none"/>
+            <path d="M9.5 28.5C14.7467 28.5 19 24.2467 19 19C19 13.7533 14.7467 9.5 9.5 9.5C4.25329 9.5 0 13.7533 0 19C0 24.2467 4.25329 28.5 9.5 28.5Z" fill="#F24E1E"/>
+            <path d="M28.5 28.5C33.7467 28.5 38 24.2467 38 19C38 13.7533 33.7467 9.5 28.5 9.5C23.2533 9.5 19 13.7533 19 19C19 24.2467 23.2533 28.5 28.5 28.5Z" fill="#FF7262"/>
+            <path d="M9.5 47.5C14.7467 47.5 19 43.2533 19 38V28.5H9.5C4.25329 28.5 0 32.7533 0 38C0 43.2533 4.25329 47.5 9.5 47.5Z" fill="#A259FF"/>
+            <path d="M19 47.5C19 52.7467 23.2533 57 28.5 57C33.7467 57 38 52.7467 38 47.5C38 42.2533 33.7467 38 28.5 38C23.2533 38 19 42.2533 19 47.5Z" fill="#1ABC9C"/>
+            <path d="M19 19C19 24.2467 23.2533 28.5 28.5 28.5C33.7467 28.5 38 24.2467 38 19C38 13.7533 33.7467 9.5 28.5 9.5C23.2533 9.5 19 13.7533 19 19Z" fill="#19BC9B" opacity="0"/>
+            <path d="M19 19V28.5H28.5C33.7467 28.5 38 24.2467 38 19C38 13.7533 33.7467 9.5 28.5 9.5C23.2533 9.5 19 13.7533 19 19Z" fill="#0ACF83"/>
+          </svg>
+          View Figma Design
         </a>
       </div>
+
+      <!-- PROBLEM STATEMENT TOGGLE -->
+      <div class="toggle-container active" id="problem-statement-toggle">
+        <div class="toggle-header" onclick="document.getElementById('problem-statement-toggle').classList.toggle('active')">
+          <span>Problem Statement</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="toggle-content">
+          <p style="margin: 0; font-size: 0.98rem; line-height: 1.7;">
+            First, identify a competitor in the job market domain. We need to find a competitor to jobs.co. Analyze the competitor based on the following points: product, business, digital platform, and growth tactics. I have assumed that jobs.co is based in Mumbai and is either in the job search market or trying to enter it.
+          </p>
+          <p style="margin: var(--space-xs) 0 0 0; font-size: 0.98rem; line-height: 1.7; font-weight: 500;">
+            I will follow the seven steps to complete the task.
+          </p>
+        </div>
+      </div>
+
+      <!-- SECTION 1 -->
+      <section class="case-section fade-up">
+        <h2>That ONE Competitor</h2>
+        <p>
+          Identifying a strong competitor is crucial, especially one in a comparable market that we aspire to compete in. To achieve this, we'll first identify all market players in the job search industry. Next, we'll define key metrics to determine the closest competitor. These metrics will help us define the target audience and create a graph to visualize and compare market players. From this analysis, we'll identify the closest competitor and proceed with a detailed analysis of that competitor.
+        </p>
+
+        <div class="case-img-wrapper">
+          <img src="images/ca2.png" alt="Steps to Identify Competitor" class="case-img">
+          <div class="case-caption">Figure 1: Strategic roadmap for competitor identification.</div>
+        </div>
+
+        <p>
+          To identify the two metrics that define our target audience, we'll create a graph with these metrics and place the market players accordingly to identify the closest competitor. For the Indian audience, the two key metrics are <strong>pay grade salary</strong> and <strong>market penetration</strong>.
+        </p>
+        <p>
+          Let's look at the chart for better clarity. The y-axis represents market penetration, increasing towards the top. The x-axis represents salary grade, ranging from blue collar to white collar jobs. Blue collar jobs are non-desk, clerical, or labor roles, while white collar jobs are office-based, such as corporate positions.
+        </p>
+        <p>
+          I've placed these competitors based on market research. The reason for choosing salary pay grade as a metric is because a large part of the Indian population is divided between blue collar and white collar jobs. Understanding this division is crucial to targeting our Indian audience and identifying the competitor that has best penetrated the Indian market.
+        </p>
+        <p>
+          Here are the six competitors we're examining: <strong>LinkedIn, Indeed, Glassdoor, Naukri, Apna, and Shine</strong>. LinkedIn is at the top for white collar jobs due to its strong social media community, where many applicants hyperlink their LinkedIn profiles in their resumes. Indeed, another global platform, primarily focuses on white collar jobs and has less penetration in blue collar roles.
+        </p>
+
+        <div class="case-img-wrapper">
+          <img src="images/ca3.png" alt="Market Mapping Matrix" class="case-img">
+          <div class="case-caption">Figure 2: Competitor placement based on Market Penetration vs Pay Grade Salary.</div>
+        </div>
+
+        <div class="highlight-box">
+          <p>
+            <strong>Key Finding:</strong> Indian companies like Naukri.com have successfully penetrated the Indian market, particularly with blue collar jobs. Therefore, when identifying the competitor that has a stronghold on the Indian audience, Naukri stands out. We will now focus our analysis on Naukri.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section class="case-section fade-up">
+        <h2>Naukri.com Profile</h2>
+        <p>
+          Naukri.com is a recruitment platform that provides hiring services to corporates and recruiters. It helps job seekers find jobs in India and overseas, with a major focus on India. The platform offers additional products such as a resume database, job listings, and response models.
+        </p>
+        <p>
+          The target audience is primarily the Indian market. Naukri.com has a strong understanding of local preferences and has created a tech product that delivers value to this audience. This has helped Naukri.com build a substantial job seekers database, attracting more recruiters and job seekers to the platform.
+        </p>
+        <p>
+          Customer reviews indicate that the platform is well-received. According to SEMrush, the website has a rating of 82 out of 100. On the Google Play Store and App Store, Naukri.com has a rating of around 4.6, with reviews in the hundreds of thousands, reflecting strong customer satisfaction.
+        </p>
+
+        <div class="grid-3col">
+          <div class="metric-card">
+            <div class="metric-val">82/100</div>
+            <div class="metric-lbl">Website Authority Rank (SEMrush)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">4.6★</div>
+            <div class="metric-lbl">Google Play Store rating</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">17L+</div>
+            <div class="metric-lbl">Active Store Reviews</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section class="case-section fade-up">
+        <h2>Customer Problem</h2>
+        <p>
+          What core problem is Naukri.com trying to solve in India? It aims to address the fundamental job search challenge of matching employees with employers across various industries, job roles, and segments.
+        </p>
+
+        <div class="case-img-wrapper">
+          <img src="images/ca4.png" alt="Customer Problem Mapping" class="case-img">
+          <div class="case-caption">Figure 3: Matching employee and employer needs.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section class="case-section fade-up">
+        <h2>Product Ecosystem</h2>
+        <p>
+          Naukri connects employees with employers through various features and services. Here's a detailed look at how it works:
+        </p>
+
+        <div class="case-img-wrapper">
+          <img src="images/ca5.png" alt="Product Offerings Overview" class="case-img">
+          <div class="case-caption">Figure 4: Naukri's dual-sided B2B and B2C product services.</div>
+        </div>
+
+        <h3 style="margin-top: var(--space-md);">For Job Seekers:</h3>
+        <ol class="numbered-list">
+          <li><strong>Profile Creation:</strong> Job seekers can create a profile, upload their resume, and list their skills, experiences, degrees, certifications, and achievements.</li>
+          <li><strong>Job Search:</strong> Users can search and apply for relevant jobs on the platform.</li>
+          <li><strong>Naukri FastForward:</strong> A premium service offering enhanced resume visibility and personalized messaging to recruiters, increasing the chances of landing a job.</li>
+        </ol>
+        <p>
+          Given India's high unemployment rate, this enhanced visibility is crucial for job seekers to stand out among thousands of applicants for a single job.
+        </p>
+
+        <h3 style="margin-top: var(--space-md);">For Recruiters:</h3>
+        <ol class="numbered-list">
+          <li><strong>Job Postings:</strong> Recruiters can post jobs, with pricing varying based on the type and location of the job.</li>
+          <li><strong>Resdex:</strong> A resume database access service allowing recruiters to filter and download resumes based on their requirements.</li>
+          <li><strong>Banner Ads:</strong> Advertisements for job postings to premium users.</li>
+          <li><strong>Applicant Tracking System (ATS):</strong> Useful for large corporates, it tracks job postings, applications, candidate skills, and provides recruitment analytics.</li>
+        </ol>
+
+        <h3 style="margin-top: var(--space-lg);">AmbitionBox Integration</h3>
+        <p>
+          Acquired by Naukri.com, this free platform is similar to Glassdoor, acting as a critical trust-building mechanism.
+        </p>
+
+        <div class="case-img-wrapper">
+          <img src="images/ca6.png" alt="AmbitionBox Ecosystem" class="case-img">
+          <div class="case-caption">Figure 5: AmbitionBox company insights and employee reviews platform.</div>
+        </div>
+
+        <ul class="bullet-list">
+          <li>It provides company reviews, ratings, and interview experiences shared by employees.</li>
+          <li>Helps potential job seekers gain insights into companies and assists companies in improving their brand image and performing competitive analysis.</li>
+        </ul>
+
+        <h3 style="margin-top: var(--space-lg);">Naukri Hiring Suite</h3>
+        <p>
+          Naukri.com has made several strategic acquisitions to enhance its offerings and build a comprehensive recruitment ecosystem:
+        </p>
+
+        <div class="case-img-wrapper">
+          <img src="images/ca7.png" alt="Acquisitions Suite" class="case-img">
+          <div class="case-caption">Figure 6: Naukri's extended brand acquisition and specialized recruitment portfolio.</div>
+        </div>
+
+        <ul class="bullet-list">
+          <li><strong>IIMjobs:</strong> Focuses on hiring top management professionals.</li>
+          <li><strong>Hirist (Highre):</strong> Specializes in tech and product roles.</li>
+          <li><strong>DoSelect:</strong> A skill assessment platform for hiring.</li>
+          <li><strong>FirstNaukri:</strong> Targets hiring fresh graduates from across India.</li>
+          <li><strong>eHire:</strong> Offers custom recruitment solutions for companies without an in-house hiring team.</li>
+        </ul>
+        <p>
+          These acquisitions form a comprehensive suite of tools and services designed to create a complete job search ecosystem, solving the core problem of connecting employees with employers.
+        </p>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section class="case-section fade-up">
+        <h2>Digital Marketing Presence</h2>
+        <p>
+          Naukri.com has a strong digital marketing presence, especially on platforms like Instagram, Spotify, and their own website. Here's an overview:
+        </p>
+
+        <div class="case-img-wrapper">
+          <img src="images/ca8.png" alt="Digital Marketing Channels" class="case-img">
+          <div class="case-caption">Figure 7: Summary of Naukri's multi-channel digital presence and sponsorships footprint.</div>
+        </div>
+
+        <h3 style="margin-top: var(--space-md);">Instagram</h3>
+        <ol class="numbered-list">
+          <li><strong>Collaborations:</strong> Naukri.com collaborates extensively on Instagram. For example, they partnered with Cricbuzz Live for the "Naukri Career Score" campaign. Cricbuzz frequently posts cricket-related content in partnership with Naukri.com, increasing brand visibility.</li>
+          <li><strong>RCB Partnership:</strong> During the IPL season, they collaborated with the Royal Challengers Bangalore (RCB), leveraging India's love for cricket to strengthen their market presence.</li>
+          <li><strong>Content:</strong> Naukri.com posts memes, corporate jargon clarifications, and other engaging content under the "Hardworking by Naukri.com" series, attracting more followers and boosting user engagement.</li>
+        </ol>
+
+        <h3 style="margin-top: var(--space-md);">Spotify</h3>
+        <ul class="bullet-list">
+          <li><strong>Workwise Podcast:</strong> Launched in late 2022, this 30-minute podcast targets a younger audience and covers various work-related topics. While the podcast itself has a modest listener base, snippets and reels from the episodes are shared on Instagram, Facebook, and Twitter, significantly increasing engagement and brand awareness.</li>
+        </ul>
+
+        <h3 style="margin-top: var(--space-md);">Website Blogs</h3>
+        <ul class="bullet-list">
+          <li><strong>Blogs:</strong> Naukri.com publishes weekly blogs on various corporate topics, enhancing their SEO. Users can also contribute blogs, which they can share on other platforms, driving more traffic to Naukri.com.</li>
+        </ul>
+
+        <h3 style="margin-top: var(--space-md);">Twitter Presence</h3>
+        <ul class="bullet-list">
+          <li><strong>Posts:</strong> While not as heavily focused on Twitter, Naukri.com shares posts about festivals, trends, and snippets from their podcast. This strategy supports their presence in the short-form content-dominated digital market.</li>
+        </ul>
+
+        <p style="margin-top: var(--space-md);">
+          Overall, Naukri.com's strategic use of social media and content marketing helps them effectively engage with their audience and strengthen their brand presence in the digital space.
+        </p>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section class="case-section fade-up">
+        <h2>SWOT Analysis</h2>
+        <p>
+          Evaluating the market leader reveals strategic gaps that Jobs.co can exploit as a nimble challenger, particularly focusing on Naukri's geographic concentration and pricing structure.
+        </p>
+
+        <div class="swot-grid">
+          <div class="swot-card swot-s">
+            <div class="swot-title">Strengths</div>
+            <ul>
+              <li>Deep Market Penetration: Strong presence in the Indian market, making it difficult for competitors to overtake them.</li>
+              <li>Diverse Job Categories: Platform offers a wide range of job categories, from blue-collar to white-collar, attracting a broad audience.</li>
+              <li>Technological Integration: Recent acquisitions and advancements have strengthened the ecosystem, enhancing user experience.</li>
+            </ul>
+          </div>
+          <div class="swot-card swot-w">
+            <div class="swot-title">Weaknesses</div>
+            <ul>
+              <li>Geographic Dependence: Highly focused on the Indian market, making it vulnerable to local economic conditions.</li>
+              <li>Revenue Dependence: Heavy reliance on recruitment and job posting fees, which can be affected by fluctuations.</li>
+            </ul>
+          </div>
+          <div class="swot-card swot-o">
+            <div class="swot-title">Opportunities</div>
+            <ul>
+              <li>Global Expansion: Expanding beyond India presents a significant growth opportunity.</li>
+              <li>Diversification: High potential for further revenue diversification through recent acquisitions.</li>
+              <li>Technology Advancements: Leveraging AI to improve job matching, search, and overall user services.</li>
+            </ul>
+          </div>
+          <div class="swot-card swot-t">
+            <div class="swot-title">Threats</div>
+            <ul>
+              <li>Economic Instability: Local economic fluctuations can directly impact recruitment activity and revenue.</li>
+              <li>Emerging Competitors: New competitors and tech innovations can disrupt Naukri.com's market position.</li>
+              <li>Regulatory Changes: Compliance with evolving regulations is essential concerning employee rights and recruitment.</li>
+            </ul>
+          </div>
+        </div>
+
+
+
+        <p style="margin-top: var(--space-md);">
+          Naukri.com must continue to innovate and adapt to maintain its leading position in the job search market, while also exploring opportunities for growth and diversification.
+        </p>
+      </section>
+
+      <!-- SECTION 7 -->
+      <section class="case-section fade-up">
+        <h2>Strategy & Future Outlook</h2>
+        <p>
+          Looking ahead at Naukri's strategies for the near future, here are the key focus areas:
+        </p>
+
+        <ol class="numbered-list">
+          <li><strong>Technological Advancements:</strong> Continuous investments in strong data science and machine learning capabilities to build advanced matching tools.</li>
+          <li><strong>Expansion of Recruitment Solutions:</strong> Accelerating portfolio market penetration towards the goal of becoming a "Complete Career Support Platform."</li>
+          <li><strong>Social Media Campaigns Targeting Gen Z:</strong> Engaging younger demographics through dedicated branding and visual media pipelines.</li>
+          <li><strong>Preparing for Job Market Disruptions:</strong> Mitigating shifts highlighted by reports like the World Economic Forum's <em>Future of Jobs</em>, which predicts displacements or disruptions to ~23% of global jobs.</li>
+        </ol>
+
+
+
+        <p style="margin-top: var(--space-md);">
+          These strategies underscore Naukri's proactive approach to enhancing their platform, expanding their market reach, and preparing for future challenges in the job market landscape.
+        </p>
+      </section>
+
+
+
     </div>
   </main>
 
   <footer>
-    <div class="container">
+    <div class="case-container">
       <p>
         Crafted by <a href="https://www.linkedin.com/in/leellokesh/" target="_blank" rel="noopener noreferrer">Lokesh Leel</a>
         &nbsp;·&nbsp;
