@@ -3,18 +3,378 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case Study 02 — Lokesh Leel</title>
-  <meta name="description" content="Case study placeholder page for Lokesh Leel's portfolio." />
+  <title>Gatorade India: Market Entry & Positioning — Lokesh Leel</title>
+  <meta name="description" content="Market entry strategy and brand positioning for Gatorade in India, developed for the Masters' Union X PepsiCo Challenge." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
+  <style>
+    /* Premium Page-Specific Styling */
+    .case-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+      margin: var(--space-md) 0 var(--space-lg);
+      padding: var(--space-sm) 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    @media (min-width: 560px) {
+      .meta-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .meta-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+    
+    .meta-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .action-row {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+    }
+
+    .case-section {
+      padding: 1.5rem 0;
+      margin-bottom: 0;
+    }
+
+    .case-section h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-top: 0;
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .case-section h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 1.2em;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .case-section h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: var(--space-md);
+      margin-bottom: 0.5rem;
+    }
+
+    .case-section p {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Collapsible Problem Statement Toggle */
+    .toggle-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin: var(--space-md) 0;
+      overflow: hidden;
+    }
+
+    .toggle-header {
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-hover);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .toggle-header svg {
+      transition: transform 0.22s ease;
+    }
+
+    .toggle-container.active .toggle-header svg {
+      transform: rotate(180deg);
+    }
+
+    .toggle-content {
+      padding: 0 var(--space-md);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out, padding 0.25s ease-out;
+    }
+
+    .toggle-container.active .toggle-content {
+      padding: var(--space-md);
+      max-height: 600px;
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: var(--space-sm) var(--space-md);
+      margin: var(--space-md) 0;
+    }
+
+    .highlight-box p {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Ambassador Cards */
+    .ambassador-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+    
+    @media (min-width: 600px) {
+      .ambassador-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .ambassador-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      text-align: center;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    
+    .ambassador-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    
+    .ambassador-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+    
+    .ambassador-role {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-sm);
+    }
+    
+    .ambassador-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Table styles */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-md) 0;
+      font-size: 0.92rem;
+      text-align: left;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    
+    .styled-table th, .styled-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .styled-table th {
+      background: var(--surface-hover);
+      color: var(--text-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid var(--border);
+    }
+    
+    .styled-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .styled-table td strong {
+      color: var(--accent);
+    }
+
+    /* Challenge Step styling */
+    .step-list {
+      margin: var(--space-md) 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    
+    .step-item {
+      display: flex;
+      gap: var(--space-sm);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm) var(--space-md);
+      align-items: flex-start;
+    }
+    
+    .step-num {
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      color: var(--text-primary);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    .step-text {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    
+    .step-text strong {
+      color: var(--text-primary);
+    }
+
+
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+
+    @media (min-width: 600px) {
+      .grid-2col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .strategy-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+    }
+
+    .strategy-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .strategy-card h4::before {
+      content: "→";
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .strategy-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .back-btn {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color var(--transition);
+    }
+    .back-btn:hover {
+      color: var(--text-primary);
+    }
+  </style>
 </head>
 <body>
   
   <header style="padding: var(--space-md) 0; border-bottom: 1px solid var(--border);">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; transition: color var(--transition);" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
+    <div class="case-container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="/" class="back-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 1px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         Back to Home
       </a>
@@ -22,35 +382,214 @@
     </div>
   </header>
 
-  <main style="padding: var(--space-xl) 0 0 0;">
-    <div class="container">
-      <div class="fade-up">
-        <span class="hero-tag">Case Study 02</span>
-      </div>
-      <h1 class="fade-up" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--space-sm);">
-        Case Study Title Two
+  <main style="padding: var(--space-md) 0 var(--space-xl);">
+    <div class="case-container">
+      
+      <!-- HERO SECTION -->
+      <span class="hero-tag fade-up" style="display: inline-block; margin-top: var(--space-xs);">Case Competition</span>
+      <h1 class="fade-up" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-top: var(--space-xs); margin-bottom: var(--space-sm);">
+        Gatorade India: Market Entry & Positioning
       </h1>
-      <p class="fade-up" style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: var(--space-lg); max-width: 580px;">
-        A detailed write-up about the problem, approach, and key outcomes of this case study.
+      <p class="fade-up" style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: var(--space-md); max-width: 720px; line-height: 1.6;">
+        Strategic GTM roadmap to transition Gatorade from a niche athletic supplement to India's leading household rehydration brand.
       </p>
 
-      <div class="fade-up" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-xl) var(--space-md); text-align: center; margin-bottom: var(--space-xl);">
-        <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(108, 99, 255, 0.2); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <!-- METADATA -->
+      <div class="meta-grid fade-up">
+        <div class="meta-item">
+          <span class="meta-label">Competition</span>
+          <span class="meta-value">Masters' Union X PepsiCo</span>
         </div>
-        <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">Under Construction</h2>
-        <p style="color: var(--text-secondary); font-size: 0.9rem; max-width: 360px; margin: 0 auto 1.5rem;">
-          We are currently preparing this case study. Check back soon for the full breakdown!
-        </p>
-        <a href="/" style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--accent); text-decoration: none; transition: opacity var(--transition);" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-          Return to home page →
+        <div class="meta-item">
+          <span class="meta-label">Team Name</span>
+          <span class="meta-value">Team Unicorn</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Timeline</span>
+          <span class="meta-value">August 2023</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Deliverable</span>
+          <span class="meta-value">Executive Summary</span>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="action-row fade-up">
+        <a href="gatorade-to-india.pdf" download="Team Unicorn - Gatorade to India.pdf" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Executive Summary (PDF)
         </a>
       </div>
+
+      <!-- PROBLEM STATEMENT TOGGLE -->
+      <div class="toggle-container active" id="problem-statement-toggle">
+        <div class="toggle-header" onclick="document.getElementById('problem-statement-toggle').classList.toggle('active')">
+          <span>Problem Statement</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="toggle-content">
+          <p style="margin: 0; font-size: 0.98rem; line-height: 1.7;">
+            Masters' Union, in collaboration with PepsiCo India, hosted a national-level challenge to propose a marketing strategy and brand positioning for Gatorade.
+          </p>
+          <p style="margin: var(--space-xs) 0 0 0; font-size: 0.98rem; line-height: 1.7;">
+            The strategy must establish Gatorade as a household brand in India, ensure strong alignment with PepsiCo's business values, analyze key entry barriers/opportunities, and display high levels of innovation.
+          </p>
+        </div>
+      </div>
+
+      <!-- SECTION 1 -->
+      <section class="case-section fade-up">
+        <h2>Huge Potential Market in India</h2>
+        <p>
+          India’s geographical proximity to the equator results in high average temperatures throughout the year. The resulting sweat loss makes India one of the most lucrative markets for sports drinks and electrolytes.
+        </p>
+        <p>
+          However, the positioning of Gatorade is critical. Direct energy drink players like <strong>Sting (45% market share)</strong> and <strong>Red Bull (22%)</strong> dominate the market through caffeine and high-sugar formulations. It is vital that Gatorade does not compete directly with these energy drinks. Instead, it must position itself as a <strong>rehydrating sports drink</strong> that replenishes essential salts lost during sweating.
+        </p>
+        <p>
+          Additionally, Gatorade must expand its image beyond a niche supplement reserved exclusively for elite athletes. A strict sports-only image deters everyday consumers from purchasing it on a regular basis, which is a major barrier to becoming a household name.
+        </p>
+
+
+      </section>
+
+      <!-- SECTION 2 -->
+      <section class="case-section fade-up">
+        <h2>Familiarity: Face of Gatorade</h2>
+        <p>
+          To establish fame and build trust among Indian consumers, Gatorade needs a carefully chosen set of brand ambassadors. Combining renowned athletic champions with popular mass media icons helps maintain athletic credibility while appealing to a broad demographic.
+        </p>
+
+        <div class="ambassador-grid">
+          <div class="ambassador-card">
+            <div class="ambassador-name">Hardik Pandya</div>
+            <div class="ambassador-role">Cricketer</div>
+            <div class="ambassador-desc">
+              Signed in 2023. As a prominent cricket star, he allows Gatorade to establish a strong presence in India's most popular sport.
+            </div>
+          </div>
+          <div class="ambassador-card">
+            <div class="ambassador-name">Sunil Chhetri</div>
+            <div class="ambassador-role">Footballer (Captain)</div>
+            <div class="ambassador-desc">
+              One of India's most trusted sports personalities. Leveraging football's rising popularity replicated from global FC Barcelona models.
+            </div>
+          </div>
+          <div class="ambassador-card">
+            <div class="ambassador-name">Kiara Advani</div>
+            <div class="ambassador-role">Bollywood Actress</div>
+            <div class="ambassador-desc">
+              Adds mass household appeal. Essential to making the brand approachable for non-athletes and balancing male-centric sports cues.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section class="case-section fade-up">
+        <h2>Social Media Challenge: "Sweat makes you shine"</h2>
+        <p>
+          To kickstart organic word-of-mouth growth and drive brand engagement, Gatorade will launch a targeted social media campaign aligned with the National Sports Day.
+        </p>
+
+        <div class="highlight-box">
+          <p>
+            <strong>Campaign Concept:</strong> Launching on <strong>August 29th (National Sports Day)</strong>, the campaign features an active physical challenge driven by brand ambassadors and everyday fitness enthusiasts using the slogan <em>"Sweat makes you shine"</em>.
+          </p>
+        </div>
+
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>Record Challenge:</strong> Users record themselves performing a physical task (e.g., a 50 push-up challenge) and tag 3 friends.</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>Upload Content:</strong> Post the video on Instagram using the campaign hashtags <strong>#sweatmakesyoushine</strong> and <strong>#nationalsportsdaywithgatorade</strong>.</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>Distribute Rewards:</strong> All participants receive direct discount codes for Gatorade products or event ticket entry.</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-text"><strong>VIP Community Access:</strong> Lucky draw winners win access to the exclusive Gatorade online fitness and tracking community.</div>
+          </div>
+        </div>
+
+
+      </section>
+
+      <!-- SECTION 4 -->
+      <section class="case-section fade-up">
+        <h2>Strategic Sponsorships</h2>
+        <p>
+          Establishing a physical presence at major local events is essential to cementing Gatorade as the top-of-mind rehydration option. Partnerships span three main categories:
+        </p>
+
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Category</th>
+              <th style="width: 30%;">Event Examples</th>
+              <th>Description & GTM Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sports Events (National level)</strong></td>
+              <td>Indian Premier League (IPL), Indian Super League (ISL), City Marathons</td>
+              <td>Use summer IPL matches to air advertisements with Hardik Pandya. Partner with massive marathons to position Gatorade as a vital safety partner to minimize heat stroke.</td>
+            </tr>
+            <tr>
+              <td><strong>College Fests</strong></td>
+              <td>Mood Indigo (IIT Bombay), Malhar (St. Xavier's Mumbai), Zomaland by Zomato</td>
+              <td>High brand awareness among active youth. Ensure Gatorade is the exclusive non-water beverage available at sweaty college concert arenas (pronites) and sporting categories.</td>
+            </tr>
+            <tr>
+              <td><strong>Rotaract Club</strong></td>
+              <td>District & National student network events</td>
+              <td>Tap into one of the largest student clubs in the world. Start with localized district sponsorships and expand to national conventions.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section class="case-section fade-up">
+        <h2>Tactical Growth Strategies</h2>
+        <p>
+          Beyond sponsorships and campaigns, Gatorade must execute tactical, ground-level strategies to gain shelf space, build familiarity, and drive product trials.
+        </p>
+
+        <div class="grid-2col">
+          <div class="strategy-card">
+            <h4>Product Placement</h4>
+            <p>Target prominent shelf ends in major supermarkets like Reliance Fresh, DMart, and Shivraj to subtly influence shoppers without overt pushy sales tactics.</p>
+          </div>
+          <div class="strategy-card">
+            <h4>Free Sampling</h4>
+            <p>Distribute free samples outside university campuses. Focus particularly on near-to-date expiry products to minimize waste while boosting brand trials.</p>
+          </div>
+          <div class="strategy-card">
+            <h4>Fitness App & Gym Integrations</h4>
+            <p>Secure product listings and promotional banners on active running/fitness apps and across major regional gym and aerobic studio networks.</p>
+          </div>
+          <div class="strategy-card">
+            <h4>Corporate Wellness Partner</h4>
+            <p>Target young earning professionals by organizing corporate wellness days and office fitness competitions, expanding Gatorade's presence as a daily desk drink.</p>
+          </div>
+        </div>
+
+
+      </section>
+
     </div>
   </main>
 
   <footer>
-    <div class="container">
+    <div class="case-container">
       <p>
         Crafted by <a href="https://www.linkedin.com/in/leellokesh/" target="_blank" rel="noopener noreferrer">Lokesh Leel</a>
         &nbsp;·&nbsp;

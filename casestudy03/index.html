@@ -3,18 +3,449 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case Study 03 — Lokesh Leel</title>
-  <meta name="description" content="Case study placeholder page for Lokesh Leel's portfolio." />
+  <title>Old Kids: Bridging the Generational Gap — Lokesh Leel</title>
+  <meta name="description" content="Strategic design and market research for 'Old Kids', a peer-to-peer intergenerational mentorship platform designed for the Tata Imagination Challenge." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
+  <style>
+    /* Premium Page-Specific Styling */
+    .case-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+      margin: var(--space-md) 0 var(--space-lg);
+      padding: var(--space-sm) 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    @media (min-width: 560px) {
+      .meta-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .meta-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+    
+    .meta-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .case-section {
+      padding: 2rem 0;
+      margin-bottom: 0;
+    }
+
+    .case-section h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-top: 0;
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .case-section h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 1.2em;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .case-section h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: var(--space-md);
+      margin-bottom: 0.5rem;
+    }
+
+    .case-section p {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Collapsible Problem Statement Toggle */
+    .toggle-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin: var(--space-md) 0;
+      overflow: hidden;
+    }
+
+    .toggle-header {
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-hover);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .toggle-header svg {
+      transition: transform 0.22s ease;
+    }
+
+    .toggle-container.active .toggle-header svg {
+      transform: rotate(180deg);
+    }
+
+    .toggle-content {
+      padding: 0 var(--space-md);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out, padding 0.25s ease-out;
+    }
+
+    .toggle-container.active .toggle-content {
+      padding: var(--space-md);
+      max-height: 600px;
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: var(--space-sm) var(--space-md);
+      margin: var(--space-md) 0;
+    }
+
+    .highlight-box p {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .grid-3col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+
+    @media (min-width: 600px) {
+      .grid-3col {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm) var(--space-md);
+      text-align: center;
+    }
+
+    .metric-val {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+    }
+
+    .metric-lbl {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .case-img-wrapper {
+      margin: var(--space-md) 0 var(--space-lg);
+      text-align: center;
+    }
+
+    .case-img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .case-img:hover {
+      transform: scale(1.01);
+      border-color: rgba(108, 99, 255, 0.6);
+    }
+
+    .case-caption {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: var(--space-xs);
+      font-style: italic;
+    }
+
+    .bullet-list, .numbered-list {
+      margin: var(--space-sm) 0 var(--space-md) var(--space-md);
+      color: var(--text-secondary);
+    }
+
+    .bullet-list li, .numbered-list li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+      font-size: 1.02rem;
+    }
+
+    .bullet-list strong, .numbered-list strong {
+      color: var(--text-primary);
+    }
+
+    /* Fixed Back Button Hover */
+    .back-btn {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color var(--transition);
+    }
+    .back-btn:hover {
+      color: var(--text-primary);
+    }
+
+    /* Infographics Styles */
+    .chart-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      margin: var(--space-md) 0 var(--space-lg);
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--space-md);
+      gap: var(--space-xs);
+    }
+
+    .chart-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: var(--space-sm);
+      font-size: 0.78rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-secondary);
+    }
+
+    .legend-color {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+
+    .legend-current { background-color: #4b4b56; }
+    .legend-desired { background-color: var(--accent); }
+
+    .chart-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+    }
+
+    .chart-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .chart-label {
+      width: 85px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .chart-bars {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .chart-bar-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .chart-bar {
+      height: 8px;
+      border-radius: 4px;
+      transition: width 1s cubic-bezier(0.1, 0.8, 0.3, 1);
+    }
+
+    .bar-current { background-color: #4b4b56; }
+    .bar-desired { background-color: var(--accent); }
+
+    .chart-bar-val {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      width: 35px;
+    }
+
+    /* Stacked Bar Styling */
+    .stacked-bar-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      margin: var(--space-sm) 0 var(--space-md);
+    }
+
+    .stacked-bar-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .stacked-bar {
+      display: flex;
+      height: 24px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: var(--space-xs);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 1s ease-out;
+    }
+
+    .seg-yes { background-color: var(--accent); }
+    .seg-maybe { background-color: rgba(108, 99, 255, 0.35); color: var(--text-primary); }
+    .seg-no { background-color: #ef4444; }
+
+    .seg-willing { background-color: #10b981; }
+    .seg-depends { background-color: #f59e0b; }
+    .seg-uninterested { background-color: #ef4444; }
+    .seg-unasked { background-color: #3f3f46; color: var(--text-secondary); }
+
+    .stacked-bar-caption {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-top: 0.4rem;
+    }
+
+    /* Strategy Grid Styles */
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+
+    @media (min-width: 600px) {
+      .strategy-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .strategy-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      border-top: 4px solid var(--border);
+    }
+
+    .strat-risk { border-top-color: #ef4444; }
+    .strat-ui { border-top-color: var(--accent); }
+    .strat-growth { border-top-color: #10b981; }
+    .strat-revenue { border-top-color: #f59e0b; }
+
+    .strategy-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .strategy-card ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .strategy-card li {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .strategy-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+  </style>
 </head>
 <body>
   
   <header style="padding: var(--space-md) 0; border-bottom: 1px solid var(--border);">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; transition: color var(--transition);" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
+    <div class="case-container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="/" class="back-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 1px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         Back to Home
       </a>
@@ -22,35 +453,316 @@
     </div>
   </header>
 
-  <main style="padding: var(--space-xl) 0 0 0;">
-    <div class="container">
-      <div class="fade-up">
-        <span class="hero-tag">Case Study 03</span>
-      </div>
-      <h1 class="fade-up" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--space-sm);">
-        Case Study Title Three
+  <main style="padding: var(--space-md) 0 var(--space-xl);">
+    <div class="case-container">
+      
+      <!-- HERO SECTION -->
+      <h1 class="fade-up" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+        Old Kids: Bridging the Generational Gap
       </h1>
-      <p class="fade-up" style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: var(--space-lg); max-width: 580px;">
-        A detailed write-up about the problem, approach, and key outcomes of this case study.
+      <p class="fade-up" style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: var(--space-md); max-width: 720px; line-height: 1.6;">
+        An intergenerational matchmaking & mentorship platform designed to connect teenagers and life veterans, countering youth loneliness and senior isolation.
       </p>
 
-      <div class="fade-up" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-xl) var(--space-md); text-align: center; margin-bottom: var(--space-xl);">
-        <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(108, 99, 255, 0.2); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <!-- METADATA -->
+      <div class="meta-grid fade-up">
+        <div class="meta-item">
+          <span class="meta-label">Focus</span>
+          <span class="meta-value">Tata Imagination Challenge</span>
         </div>
-        <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">Under Construction</h2>
-        <p style="color: var(--text-secondary); font-size: 0.9rem; max-width: 360px; margin: 0 auto 1.5rem;">
-          We are currently preparing this case study. Check back soon for the full breakdown!
-        </p>
-        <a href="/" style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--accent); text-decoration: none; transition: opacity var(--transition);" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-          Return to home page →
-        </a>
+        <div class="meta-item">
+          <span class="meta-label">Category</span>
+          <span class="meta-value">Product Strategy & Research</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Timeline</span>
+          <span class="meta-value">January 2022</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Deliverable</span>
+          <span class="meta-value">Product Case Study</span>
+        </div>
       </div>
+
+      <!-- HERO BANNERS -->
+      <div class="case-img-wrapper fade-up">
+        <img src="images/old-kids-hero.png" alt="Old Kids concept showing grandfather and child sharing stories" class="case-img">
+        <div class="case-caption">Figure 1: "Old Kids" cover concept representing the bridge of wisdom, connection, and empathy.</div>
+      </div>
+
+      <!-- PROBLEM STATEMENT TOGGLE -->
+      <div class="toggle-container active" id="problem-statement-toggle">
+        <div class="toggle-header" onclick="document.getElementById('problem-statement-toggle').classList.toggle('active')">
+          <span>The Core Problem & Context</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="toggle-content">
+          <p style="margin: 0; font-size: 0.98rem; line-height: 1.7;">
+            We live in a hyper-connected digital world, yet research shows that younger generations (ages 13-25) are increasingly struggling to find purpose, dealing with isolation, and failing to connect with life at its simplest. One of the underlying causes is a growing structural disconnect from their grandparents and the elderly.
+          </p>
+          <p style="margin: var(--space-xs) 0 0 0; font-size: 0.98rem; line-height: 1.7;">
+            Simultaneously, older people (ages 50+) are living longer but experiencing acute loneliness and a feeling of being "unwanted" in a fast-paced society, often detached from the dynamic situations the younger generation goes through.
+          </p>
+          <p style="margin: var(--space-xs) 0 0 0; font-size: 0.98rem; line-height: 1.7; font-weight: 500;">
+            <strong>The Opportunity:</strong> Establish "Old Kids" — a peer-to-peer platform connecting youth and veterans of life for 1-on-1 audio/video storytelling, mentorship, and mutual understanding.
+          </p>
+        </div>
+      </div>
+
+      <!-- SECTION 1: THE CORE VALUE PROPOSITION -->
+      <section class="case-section fade-up">
+        <h2>The Core Value Proposition</h2>
+        <p>
+          The platform operates as a dual-sided matching ecosystem where teenagers and seniors connect to exchange value. Unlike typical social networks or mentorship sites that focus on professional advice, "Old Kids" centers on <strong>wisdom transfer, storytelling, and emotional companionship</strong>.
+        </p>
+        
+        <h3 style="margin-top: var(--space-md);">Mutual Value Creation Grid</h3>
+        <div class="grid-3col">
+          <div class="metric-card">
+            <div class="metric-val" style="font-size: 1.3rem; margin-bottom: 0.4rem;">For Younger Generation</div>
+            <div class="metric-lbl" style="text-align: left; line-height: 1.5;">
+              Listen to rich, real-world experiences about failure, success, cultural diversity, and resilience. Build a grounded perspective and gain organic mentorship.
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val" style="font-size: 1.3rem; margin-bottom: 0.4rem; color: #10b981;">The Match (Connect)</div>
+            <div class="metric-lbl" style="text-align: left; line-height: 1.5;">
+              A secure interest-based and language-matched bridge matching teenagers (13-25) with experienced veterans of life (50+) for one-on-one sessions.
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val" style="font-size: 1.3rem; margin-bottom: 0.4rem; color: #f59e0b;">For Older Generation</div>
+            <div class="metric-lbl" style="text-align: left; line-height: 1.5;">
+              Share life stories, combat isolation, feel valued, and simultaneously learn about current youth mindsets, technology, and modern challenges.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: MARKET RESEARCH & DATA VALIDATION -->
+      <section class="case-section fade-up">
+        <h2>Market Research & Data Validation</h2>
+        <p>
+          To validate if there was actual demand for such a connection, we conducted a quantitative survey obtaining <strong>111 valid responses</strong>, primarily from teenagers and college students (average age of <strong>20.2 years</strong>, ranging from 17 to 30).
+        </p>
+
+        <!-- Circular gauge metrics callout -->
+        <div class="grid-3col">
+          <div class="metric-card">
+            <div class="metric-val">94.6%</div>
+            <div class="metric-lbl">Youth enjoy talking to grandparents / elders</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">71.4%</div>
+            <div class="metric-lbl">Desire cross-cultural elder interactions</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">96.6%</div>
+            <div class="metric-lbl">Seniors open to talking (excluding unasked)</div>
+          </div>
+        </div>
+
+        <!-- Custom HTML CSS Infographics - Current vs Desired -->
+        <div class="chart-container">
+          <div class="chart-header">
+            <span class="chart-title">The Interaction Gap: Current vs. Desired Frequency</span>
+            <div class="chart-legend">
+              <div class="legend-item"><span class="legend-color legend-current"></span> Current</div>
+              <div class="legend-item"><span class="legend-color legend-desired"></span> Desired</div>
+            </div>
+          </div>
+          
+          <div class="chart-rows">
+            <!-- Daily -->
+            <div class="chart-row">
+              <div class="chart-label">Daily</div>
+              <div class="chart-bars">
+                <div class="chart-bar-item">
+                  <div class="chart-bar bar-current" style="width: 25.9%;"></div>
+                  <span class="chart-bar-val">25.9%</span>
+                </div>
+                <div class="chart-bar-item">
+                  <div class="chart-bar bar-desired" style="width: 47.7%;"></div>
+                  <span class="chart-bar-val">47.7%</span>
+                </div>
+              </div>
+            </div>
+            <!-- Weekly -->
+            <div class="chart-row">
+              <div class="chart-label">Weekly</div>
+              <div class="chart-bars">
+                <div class="chart-bar-item">
+                  <div class="chart-bar bar-current" style="width: 37.5%;"></div>
+                  <span class="chart-bar-val">37.5%</span>
+                </div>
+                <div class="chart-bar-item">
+                  <div class="chart-bar bar-desired" style="width: 40.5%;"></div>
+                  <span class="chart-bar-val">40.5%</span>
+                </div>
+              </div>
+            </div>
+            <!-- Monthly -->
+            <div class="chart-row">
+              <div class="chart-label">Monthly</div>
+              <div class="chart-bars">
+                <div class="chart-bar-item">
+                  <div class="chart-bar bar-current" style="width: 21.4%;"></div>
+                  <span class="chart-bar-val">21.4%</span>
+                </div>
+                <div class="chart-bar-item">
+                  <div class="chart-bar bar-desired" style="width: 7.2%;"></div>
+                  <span class="chart-bar-val">7.2%</span>
+                </div>
+              </div>
+            </div>
+            <!-- Yearly -->
+            <div class="chart-row">
+              <div class="chart-label">Yearly</div>
+              <div class="chart-bars">
+                <div class="chart-bar-item">
+                  <div class="chart-bar bar-current" style="width: 9.8%;"></div>
+                  <span class="chart-bar-val">9.8%</span>
+                </div>
+                <div class="chart-bar-item">
+                  <div class="chart-bar bar-desired" style="width: 3.6%;"></div>
+                  <span class="chart-bar-val">3.6%</span>
+                </div>
+              </div>
+            </div>
+            <!-- Nearly None -->
+            <div class="chart-row">
+              <div class="chart-label">Nearly None</div>
+              <div class="chart-bars">
+                <div class="chart-bar-item">
+                  <div class="chart-bar bar-current" style="width: 5.4%;"></div>
+                  <span class="chart-bar-val">5.4%</span>
+                </div>
+                <div class="chart-bar-item">
+                  <div class="chart-bar bar-desired" style="width: 0.9%;"></div>
+                  <span class="chart-bar-val">0.9%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cross-Cultural Stacked Bar -->
+        <div class="stacked-bar-container">
+          <div class="stacked-bar-title">Interest in Cross-Cultural & Geographical Matches</div>
+          <div class="stacked-bar">
+            <div class="segment seg-yes" style="width: 71.4%;">71.4% Yes</div>
+            <div class="segment seg-maybe" style="width: 28.6%;">28.6% Maybe</div>
+          </div>
+          <div class="stacked-bar-caption"><strong>Key Takeaway:</strong> 100% of the respondents were open or positive to speaking with seniors who are from different geographical or cultural backgrounds, highlighting a massive curiosity in diverse heritage and life experiences.</div>
+        </div>
+
+        <!-- Supply-Side Stacked Bar -->
+        <div class="stacked-bar-container">
+          <div class="stacked-bar-title">Supply Feasibility: Senior Willingness to Participate</div>
+          <div class="stacked-bar">
+            <div class="segment seg-willing" style="width: 41.1%;">41.1% Yes</div>
+            <div class="segment seg-depends" style="width: 36.6%;">36.6% Maybe (Depends)</div>
+            <div class="segment seg-unasked" style="width: 19.6%;">19.6% Did Not Ask</div>
+            <div class="segment seg-uninterested" style="width: 2.7%;">2.7% No</div>
+          </div>
+          <div class="stacked-bar-caption"><strong>Supply Validation:</strong> Over 77.7% of respondents reported seniors in their direct network would be willing or open (depends) to telling stories to youth, proving that matching supply exists offline.</div>
+        </div>
+
+        <div class="highlight-box">
+          <p>
+            <strong>Research Insight:</strong> The data highlights a significant unmet demand. While <strong>88.2%</strong> of youth desire regular (daily or weekly) interaction with elders, currently only <strong>63.4%</strong> receive it. More importantly, the monthly/yearly communication drops drastically in desired scenarios, indicating that younger people actively seek frequent, meaningful dialogue but lack the channel to establish it.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 3: PRODUCT STRATEGY & RISK MITIGATION -->
+      <section class="case-section fade-up">
+        <h2>Strategic Product Mitigations</h2>
+        <p>
+          Translating research responses and constructive criticisms into tangible product requirements, we address the primary product management risks for this platform.
+        </p>
+
+        <div class="strategy-grid">
+          <!-- Safety & Moderation -->
+          <div class="strategy-card strat-risk">
+            <div class="strategy-title">Safety & Moderation</div>
+            <ul>
+              <li><strong>Risk:</strong> Safety concerns regarding malicious or creepy users leveraging P2P video calls.</li>
+              <li><strong>Mitigation:</strong> Implement Aadhaar/KYC identity verification for all accounts. Add real-time automated safety scanning of audio/video for harmful content and a prominent panic/report trigger.</li>
+            </ul>
+          </div>
+          <!-- Tech Accessibility -->
+          <div class="strategy-card strat-ui">
+            <div class="strategy-title">Elder-Friendly UX (Accessibility)</div>
+            <ul>
+              <li><strong>Risk:</strong> Many seniors above 60 are unfamiliar with complex mobile application flows.</li>
+              <li><strong>Mitigation:</strong> Build integration with WhatsApp. Seniors can dial a local phone number, verify, and receive session invites as simple WhatsApp links. App UI features large typography, voice navigation, and simplified button tabs.</li>
+            </ul>
+          </div>
+          <!-- Cold Start -->
+          <div class="strategy-card strat-growth">
+            <div class="strategy-title">Cold Start (Supply/Demand)</div>
+            <ul>
+              <li><strong>Risk:</strong> Launching a double-sided P2P marketplace requires balancing supply and demand.</li>
+              <li><strong>Mitigation:</strong> Partner with established NGOs, old-age orphanages, and senior clubs to group-enroll seniors. We equip old-age homes with pre-configured tablets and internet access to facilitate initial storytelling hours.</li>
+            </ul>
+          </div>
+          <!-- Retention -->
+          <div class="strategy-card strat-revenue">
+            <div class="strategy-title">User Engagement & Retention</div>
+            <ul>
+              <li><strong>Risk:</strong> Initial calls can be awkward, leading to users dropping off after one call.</li>
+              <li><strong>Mitigation:</strong> Activity-led prompts. Incorporate structured weekend themes, guided memory triggers (e.g. "Tell me about your school days", "Share a photo of your first job"), and regional storytelling tracks.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: PRODUCT ARCHITECTURE & FEATURES -->
+      <section class="case-section fade-up">
+        <h2>Product Design & Features</h2>
+        <p>
+          To make "Old Kids" successful, we design the product around three core pillars:
+        </p>
+
+        <ul class="bullet-list">
+          <li><strong>Interest-Based Matchmaking Engine:</strong> Youth fill out onboarding cards highlighting areas of interest (e.g., career paths, history, cultural diversity, managing failures, travel stories). Seniors select tags based on their life adventures. The matching engine matches them for 1-on-1 scheduled sessions.</li>
+          <li><strong>Guided Conversation Prompts:</strong> To ensure high-quality conversations, each video call has a bottom-sheet prompt tray containing icebreaker cards, old photo sharing (supporting uploads from the elder's side), and mini cultural quizzes.</li>
+          <li><strong>Multi-Perspective Group Panels:</strong> Based on research suggestions, we introduce "Life Circles," where 2-3 elders share stories on a specific topic (e.g., "India in the 80s") with a group of 3-5 students, facilitating wider viewpoints and relaxing the pressure of 1-on-1 interactions.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 5: REVENUE MODEL & MARKET FIT -->
+      <section class="case-section fade-up">
+        <h2>Business Model & GTM</h2>
+        <p>
+          "Old Kids" is built as a social-impact business using a freemium model to ensure accessibility while sustaining development costs.
+        </p>
+
+        <ol class="numbered-list">
+          <li><strong>Free Tier (Community Matchmaking):</strong> Basic interest-based matches for 15-minute storytelling chats. Focused on maximizing societal connection and loneliness reduction.</li>
+          <li><strong>Premium Tier (Curated Mentorship):</strong> Access to highly specialized life veterans (e.g., retired industry leaders, prominent professors, historical experts) for structured, recurring 1-on-1 mentorship. Includes session scheduling, recording, and progress tracking.</li>
+          <li><strong>B2B Corporate Partnerships (CSR):</strong> Collaborating with corporations under their Corporate Social Responsibility (CSR) budgets to sponsor digital literacy devices (tablets, headphones, internet) for participating old-age homes.</li>
+        </ol>
+      </section>
+
+      <!-- SECTION 6: REFLECTIONS & KEY PM TAKEAWAYS -->
+      <section class="case-section fade-up" style="border-bottom: none;">
+        <h2>Reflections & Key Takeaways</h2>
+        <p>
+          Designing a platform like "Old Kids" for the Tata Imagination Challenge highlighted the importance of empathy in product design.
+        </p>
+        <ul class="bullet-list">
+          <li><strong>Designing for Accessibility is Critical:</strong> A digital product that targets seniors must consider physical constraints (eyesight, motor skills) and digital literacy levels. Designing a Whatsapp-first call integration was a key shift to accommodate seniors' comfort zones.</li>
+          <li><strong>Mitigating Marketplace Risks:</strong> Double-sided marketplaces live and die by trust. By building safety (Aadhaar verification) directly into the core loop, we protect the vulnerable age groups on both ends of the platform.</li>
+        </ul>
+      </section>
+
     </div>
   </main>
 
   <footer>
-    <div class="container">
+    <div class="case-container">
       <p>
         Crafted by <a href="https://www.linkedin.com/in/leellokesh/" target="_blank" rel="noopener noreferrer">Lokesh Leel</a>
         &nbsp;·&nbsp;
