@@ -185,18 +185,24 @@ section + section {
 }
 
 .card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-md);
   transition: transform var(--transition), border-color var(--transition), background var(--transition);
-  cursor: default;
 }
 
 .card:hover {
   transform: translateY(-4px);
   border-color: rgba(108, 99, 255, 0.35);
   background: var(--surface-hover);
+}
+
+.card:hover .card-link {
+  opacity: 0.75;
 }
 
 .card-tag {
@@ -276,6 +282,8 @@ section + section {
   display: flex;
   gap: var(--space-md);
   align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
   transition: transform var(--transition), border-color var(--transition), background var(--transition);
 }
 
@@ -283,6 +291,10 @@ section + section {
   transform: translateY(-3px);
   border-color: rgba(108, 99, 255, 0.35);
   background: var(--surface-hover);
+}
+
+.case-card:hover .card-link {
+  opacity: 0.75;
 }
 
 .case-num {
