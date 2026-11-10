@@ -1,62 +1,432 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project 02 — Lokesh Leel</title>
-  <meta name="description" content="Project placeholder page for Lokesh Leel's portfolio." />
+  <title>OrangePod — Operations & Delivery Case Study | Lokesh Leel</title>
+  <meta name="description"
+    content="Case study on streamlining product delivery, client onboarding, design alignment, and driving an 87% complaint reduction at OrangePod." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
+  <style>
+    .case-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+      margin: var(--space-md) 0 var(--space-lg);
+      padding: var(--space-sm) 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (min-width: 560px) {
+      .meta-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+
+    .meta-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .stat-banner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+
+    @media (min-width: 600px) {
+      .stat-banner {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .case-section {
+      padding: 1.75rem 0;
+      margin-bottom: 0;
+    }
+
+    .case-section+.case-section {
+      border-top: 1px solid var(--border);
+    }
+
+    .case-section h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-top: 0;
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .case-section h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 1.2em;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .case-section h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: var(--space-md);
+      margin-bottom: 0.4rem;
+    }
+
+    .case-section p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: var(--space-sm);
+    }
+
+    .case-img-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      margin: var(--space-md) 0 var(--space-lg);
+    }
+
+    @media (min-width: 680px) {
+      .case-img-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    .case-img-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      padding: 0.5rem;
+    }
+
+    .case-img {
+      width: 100%;
+      height: auto;
+      border-radius: calc(var(--radius-sm) - 2px);
+      display: block;
+    }
+
+    .case-caption {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      padding: 0 0.25rem 0.25rem;
+      line-height: 1.45;
+    }
+
+    .bullet-list {
+      margin: var(--space-xs) 0 var(--space-md) 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .bullet-list li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+      font-size: 0.96rem;
+    }
+
+    .bullet-list strong {
+      color: var(--text-primary);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+
+    @media (min-width: 600px) {
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .feature-item {
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+
+    .feature-item strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .feature-item span {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .quote-box {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: var(--space-sm) var(--space-md);
+      margin: var(--space-md) 0;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+  </style>
 </head>
+
 <body>
-  
+
   <header style="padding: var(--space-md) 0; border-bottom: 1px solid var(--border);">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; transition: color var(--transition);" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 1px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    <div class="case-container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="/"
+        style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; transition: color var(--transition);"
+        onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
         Back to Home
       </a>
-      <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase;">Lokesh Leel</span>
+      <span
+        style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase;">Lokesh
+        Leel</span>
     </div>
   </header>
 
-  <main style="padding: var(--space-xl) 0 0 0;">
-    <div class="container">
+  <main style="padding: var(--space-lg) 0 3rem 0;">
+    <div class="case-container">
+
+      <!-- Header / Title -->
       <div class="fade-up">
-        <span class="hero-tag">Project 02</span>
+        <span class="hero-tag">Project 02 · Early-Stage Startup</span>
       </div>
-      <h1 class="fade-up" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--space-sm);">
-        Project Name Two
+      <h1 class="fade-up"
+        style="font-size: clamp(1.85rem, 4vw, 2.75rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--space-xs);">
+        OrangePod: Scaling Client Delivery &amp; SLA Alignment
       </h1>
-      <p class="fade-up" style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: var(--space-lg); max-width: 580px;">
-        A detailed write-up about the problem, approach, and key outcomes of this project.
+      <p class="fade-up"
+        style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: var(--space-md); max-width: 680px;">
+        How structuring productized onboarding, upfront design alignment, and client SLAs turned service chaos into an
+        87% complaint reduction across multi-channel client accounts.
       </p>
 
-      <div class="fade-up" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-xl) var(--space-md); text-align: center; margin-bottom: var(--space-xl);">
-        <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(108, 99, 255, 0.2); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <!-- Meta Grid -->
+      <div class="meta-grid fade-up">
+        <div class="meta-item">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">Product In-Charge</span>
         </div>
-        <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">Under Construction</h2>
-        <p style="color: var(--text-secondary); font-size: 0.9rem; max-width: 360px; margin: 0 auto 1.5rem;">
-          We are currently preparing this project. Check back soon for the full breakdown!
-        </p>
-        <a href="/" style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--accent); text-decoration: none; transition: opacity var(--transition);" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-          Return to home page →
-        </a>
+        <div class="meta-item">
+          <span class="meta-label">Timeline</span>
+          <span class="meta-value">Sep 2021 – Apr 2022</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Context</span>
+          <span class="meta-value">Early-Stage Agency / Startup</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Core Focus</span>
+          <span class="meta-value">Ops, Delivery &amp; Client Retention</span>
+        </div>
       </div>
+
+      <!-- Impact Stats -->
+      <div class="stat-banner fade-up">
+        <div class="stat-card">
+          <div class="stat-num">-87%</div>
+          <div class="stat-label">Client Complaints (in 3 mos)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">4 Core</div>
+          <div class="stat-label">Service Workstreams Streamlined</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Structured SLA Onboarding</div>
+        </div>
+      </div>
+
+      <!-- Context & Challenge -->
+      <section class="case-section fade-up">
+        <h2>1. Context &amp; The Friction</h2>
+        <p>
+          In late 2021, during peak pandemic remote work and while completing final-year university lectures early
+          morning, I joined early-stage digital marketing studio <strong>OrangePod</strong> as Product In-Charge.
+        </p>
+        <p>
+          The agency serviced small-to-medium businesses across four primary offerings: <strong>Web Development, Google
+            Business Profile Management, Meta Ads (Facebook &amp; Instagram), and Organic Social Media
+            Handling</strong>.
+        </p>
+        <div class="quote-box">
+          <strong>The Problem:</strong> As new clients joined, delivery was ad-hoc. Scope was loosely communicated,
+          feedback cycles dragged indefinitely over WhatsApp and email, and misaligned creative expectations led to
+          constant revisions ("Can we edit this post again?") and unhappy clients on delivery day.
+        </div>
+      </section>
+
+      <!-- Artifacts / Visuals -->
+      <section class="case-section fade-up">
+        <h2>2. Public Brand &amp; Creative Execution</h2>
+        <p>
+          OrangePod positioned itself as a creative digital partner for brands navigating online transition during
+          COVID-19. Bridging creative production with dependable delivery was the top operational bottleneck.
+        </p>
+        <div class="case-img-grid">
+          <div class="case-img-card">
+            <img src="assets/orangepod-profile.png" alt="OrangePod Instagram profile" class="case-img" />
+            <div class="case-caption">OrangePod brand identity and social positioning.</div>
+          </div>
+          <div class="case-img-card">
+            <img src="assets/orangepod-grid.jpg" alt="OrangePod campaigns and client creative pipeline"
+              class="case-img" />
+            <div class="case-caption">Client creatives &amp; brand campaigns across seasonal and topical events.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Solution / Execution -->
+      <section class="case-section fade-up">
+        <h2>3. Streamlining Product Delivery &amp; Design Alignment</h2>
+        <p>
+          To stop reactive firefighting, I productized the service delivery lifecycle from initial pitch to month-end
+          reporting:
+        </p>
+
+        <div class="feature-grid">
+          <div class="feature-item">
+            <strong>1. Standardized Intake &amp; Onboarding</strong>
+            <span>Introduced a single-source client questionnaire capturing brand guidelines, tone, target audience, and
+              non-negotiables before any designer or developer opened a blank canvas.</span>
+          </div>
+          <div class="feature-item">
+            <strong>2. Upfront Design Mockups &amp; Guardrails</strong>
+            <span>Shifted from delivering final assets without alignment to a 2-stage sprint: Moodboard/Template
+              sign-off &rarr; Content batching. Revisions dropped because expectations were anchored early.</span>
+          </div>
+          <div class="feature-item">
+            <strong>3. Client Presentation Cadence</strong>
+            <span>Transformed async back-and-forth into structured weekly client syncs with clear presentation decks,
+              walking clients through analytics, ad spend ROAS, and creative rationale.</span>
+          </div>
+          <div class="feature-item">
+            <strong>4. Clear Review SLAs</strong>
+            <span>Instituted clear turnaround windows (e.g. 48-hour feedback windows for calendar sign-off), preventing
+              last-minute scheduling panics and ad delays.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Steering Customer Service & Outcomes -->
+      <section class="case-section fade-up">
+        <h2>4. Steering Customer Service: The 87% Reduction</h2>
+        <p>
+          Customer churn in agency and service-product hybrids is almost always an expectations problem, not a skill
+          problem. By establishing myself as the central client-facing escalation point:
+        </p>
+        <ul class="bullet-list">
+          <li><strong>Root-Cause Tagging:</strong> Logged every incoming complaint to pinpoint the source (copy error,
+            scope creep, missed deadline, or mismatched tone). Over 70% stemmed from unclear initial design scoping.
+          </li>
+          <li><strong>Client Management Playbook:</strong> Trained the internal team on proactive communication—alerting
+            clients before a bottleneck occurred rather than explaining after an SLA slipped.</li>
+          <li><strong>Measurable Outcome:</strong> Within 3 months of rollout, customer grievance volume fell by
+            <strong>87%</strong>, delivery turnaround became predictable, and client retention into month-to-month
+            retainers stabilized.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Learnings / PM Takeaway -->
+      <section class="case-section fade-up">
+        <h2>5. Product Management Takeaways</h2>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <strong>Ops as a Product</strong>
+            <span>Internal processes, feedback loops, and customer communications require the same rigorous user-journey
+              mapping as software features.</span>
+          </div>
+          <div class="feature-item">
+            <strong>Commercial &amp; Client Empathy</strong>
+            <span>Balancing sales promises with realistic team capacity is the foundation of dependable product delivery
+              and customer trust.</span>
+          </div>
+        </div>
+      </section>
+
     </div>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>
-        Crafted by <a href="https://www.linkedin.com/in/leellokesh/" target="_blank" rel="noopener noreferrer">Lokesh Leel</a>
-        &nbsp;·&nbsp;
-        <a href="mailto:hello@lokeshleel.space">hello@lokeshleel.space</a>
+  <footer style="border-top: 1px solid var(--border); padding: var(--space-lg) 0;">
+    <div class="case-container" style="text-align: center;">
+      <p style="color: var(--text-muted); font-size: 0.85rem;">
+        &copy; 2026 Crafted by <a href="https://www.linkedin.com/in/leellokesh/" target="_blank"
+          rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none;">Lokesh Leel</a>
       </p>
     </div>
   </footer>
+
 </body>
+
 </html>

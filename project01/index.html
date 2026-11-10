@@ -1,62 +1,789 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project 01 — Lokesh Leel</title>
-  <meta name="description" content="Project placeholder page for Lokesh Leel's portfolio." />
+  <title>Max — AI Calendar Assistant | Lokesh Leel</title>
+  <meta name="description"
+    content="Product case study and MVP prototype for Max, a conversational AI calendar assistant built to solve Android calendar scheduling friction." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
+  <style>
+    /* Page-Specific Styling — mirrors casestudy pattern */
+    .case-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Meta grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+      margin: var(--space-md) 0 var(--space-lg);
+      padding: var(--space-sm) 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (min-width: 560px) {
+      .meta-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+
+    .meta-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* Prototype callout */
+    .prototype-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+
+    @media (min-width: 560px) {
+      .prototype-box {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-md);
+      }
+    }
+
+    .prototype-box h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 0.25rem;
+    }
+
+    .prototype-box p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .prototype-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-shrink: 0;
+      background: var(--accent);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.65rem 1.15rem;
+      border-radius: var(--radius-sm);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .prototype-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* Sections */
+    .case-section {
+      padding: 1.5rem 0;
+      margin-bottom: 0;
+    }
+
+    .case-section+.case-section {
+      border-top: 1px solid var(--border);
+    }
+
+    .case-section h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-top: 0;
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .case-section h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 1.2em;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .case-section h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: var(--space-md);
+      margin-bottom: 0.5rem;
+    }
+
+    .case-section p {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Images */
+    .case-img-wrapper {
+      margin: var(--space-md) 0 var(--space-lg);
+      text-align: center;
+    }
+
+    .case-img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .case-img:hover {
+      transform: scale(1.01);
+      border-color: rgba(11, 143, 175, 0.6);
+    }
+
+    .case-caption {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: var(--space-xs);
+      font-style: italic;
+    }
+
+    /* Lists */
+    .bullet-list {
+      margin: var(--space-sm) 0 var(--space-md) var(--space-md);
+      color: var(--text-secondary);
+    }
+
+    .bullet-list li {
+      margin-bottom: 0.5rem;
+      line-height: 1.65;
+      font-size: 1rem;
+    }
+
+    .bullet-list strong {
+      color: var(--text-primary);
+    }
+
+    /* Feature chips */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+
+    @media (min-width: 560px) {
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+
+    .feature-text strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .feature-text span {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Blockquote / callout */
+    .example-block {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: var(--space-sm) var(--space-md);
+      margin: var(--space-md) 0;
+    }
+
+    .example-block p {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin: 0 0 0.5rem;
+      font-weight: 600;
+    }
+
+    .example-block ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .example-block li {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      padding: 0.3rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .example-block li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .sunset-callout {
+      background: #fdf2f2;
+      border: 1px solid #fecaca;
+      border-left: 3px solid #dc2626;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: var(--space-md);
+      margin: var(--space-md) 0;
+    }
+
+    .sunset-callout h3 {
+      margin-top: 0;
+      margin-bottom: 0.45rem;
+      color: #991b1b;
+      font-size: 1.1rem;
+    }
+
+    .sunset-callout p {
+      color: #4a5568;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .sunset-callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .sunset-callout a {
+      color: #b91c1c;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    .sunset-callout a:hover {
+      color: #7f1d1d;
+    }
+
+    /* Tech stack pills */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: var(--space-sm) 0 var(--space-md);
+    }
+
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+    }
+
+    .tech-pill-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-right: 0.1rem;
+    }
+
+    /* Metric cards */
+    .grid-3col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+
+    @media (min-width: 600px) {
+      .grid-3col {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm) var(--space-md);
+      text-align: center;
+    }
+
+    .metric-val {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-lbl {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    /* Two-column impact */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+
+    @media (min-width: 560px) {
+      .impact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .impact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+    }
+
+    .impact-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 0.6rem;
+    }
+
+    .impact-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .impact-card li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      padding: 0.25rem 0;
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .impact-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .impact-card strong {
+      color: var(--text-primary);
+    }
+
+    /* Roadmap checklist */
+    .roadmap-list {
+      margin: var(--space-sm) 0 var(--space-md);
+      padding: 0;
+      list-style: none;
+    }
+
+    .roadmap-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 0;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .roadmap-list li:last-child {
+      border-bottom: none;
+    }
+
+    .roadmap-check {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    /* Back button */
+    .back-btn {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color var(--transition);
+    }
+
+    .back-btn:hover {
+      color: var(--text-primary);
+    }
+  </style>
 </head>
+
 <body>
-  
+
   <header style="padding: var(--space-md) 0; border-bottom: 1px solid var(--border);">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; transition: color var(--transition);" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 1px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    <div class="case-container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="/" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round" style="margin-top: 1px;">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
         Back to Home
       </a>
-      <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase;">Lokesh Leel</span>
+      <span
+        style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase;">Lokesh
+        Leel</span>
     </div>
   </header>
 
-  <main style="padding: var(--space-xl) 0 0 0;">
-    <div class="container">
-      <div class="fade-up">
-        <span class="hero-tag">Project 01</span>
-      </div>
-      <h1 class="fade-up" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--space-sm);">
-        Project Name One
+  <main style="padding: var(--space-md) 0 var(--space-xl);">
+    <div class="case-container">
+
+      <!-- HERO -->
+      <h1 class="fade-up"
+        style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+        Max — AI Calendar Assistant
       </h1>
-      <p class="fade-up" style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: var(--space-lg); max-width: 580px;">
-        A detailed write-up about the problem, approach, and key outcomes of this project.
+      <p class="fade-up"
+        style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: var(--space-md); max-width: 720px; line-height: 1.6;">
+        Turning everyday natural language into Google Calendar actions — built from user discovery around Android
+        scheduling friction through wireframing, system architecture, and a live Streamlit MVP prototype.
       </p>
 
-      <div class="fade-up" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-xl) var(--space-md); text-align: center; margin-bottom: var(--space-xl);">
-        <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(108, 99, 255, 0.2); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <!-- META -->
+      <div class="meta-grid fade-up">
+        <div class="meta-item">
+          <span class="meta-label">Timeline</span>
+          <span class="meta-value">Nov 2023</span>
         </div>
-        <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">Under Construction</h2>
-        <p style="color: var(--text-secondary); font-size: 0.9rem; max-width: 360px; margin: 0 auto 1.5rem;">
-          We are currently preparing this project. Check back soon for the full breakdown!
-        </p>
-        <a href="/" style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--accent); text-decoration: none; transition: opacity var(--transition);" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-          Return to home page →
-        </a>
+        <div class="meta-item">
+          <span class="meta-label">Category</span>
+          <span class="meta-value">AI / Productivity</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">MVP Stack</span>
+          <span class="meta-value">Streamlit · Gemini 2.5</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">Archived Prototype</span>
+        </div>
       </div>
+
+      <!-- LIVE PROTOTYPE -->
+      <section class="prototype-box fade-up" aria-label="Interactive Prototype">
+        <div>
+          <h2>Interactive Prototype</h2>
+          <p>Test the live Streamlit MVP against a shared sandbox calendar powered by a Google service account, so no
+            personal Google authentication is required.</p>
+        </div>
+        <a href="https://maxrail01.streamlit.app/" target="_blank" rel="noopener noreferrer" class="prototype-btn">
+          Try Live Prototype
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </section>
+
+      <!-- 1. PROBLEM DISCOVERY -->
+      <section class="case-section fade-up">
+        <h2>Problem Discovery &amp; User Research</h2>
+        <p>
+          While observing colleagues manage their daily schedules on Android, I noticed recurring friction around a
+          seemingly simple task: adding a single calendar event. Creating an entry forced users through multi-step form
+          fields and nested dropdowns—picking dates, start and end times, notifications, and descriptions manually.
+        </p>
+        <p>
+          Yet when those same colleagues talked aloud about their schedule, the mental model was effortless: <em>"I have
+            a Product demo meeting at 4 PM today."</em> All the structured metadata existed in one natural sentence, but
+          the mobile calendar UI made translating that sentence unnecessarily tedious.
+        </p>
+        <p>
+          I ran qualitative user interviews with colleagues to verify whether this friction was widespread rather than
+          an isolated quirk. The interviews confirmed two insights:
+        </p>
+        <ul class="bullet-list">
+          <li><strong>High entry tax on routine events:</strong> Users frequently delayed logging ad-hoc meetings or
+            reminders on mobile because form entry interrupted their workflow.</li>
+          <li><strong>Confidence requires visual confirmation:</strong> Users wanted conversational speed without losing
+            sight of their schedule, so any AI action had to stay anchored to a live calendar view to prevent
+            double-booking.</li>
+        </ul>
+        <p>
+          Recognizing early that Google would likely introduce native conversational support over time, I scoped the
+          build as a rapid desktop Streamlit prototype (MVP). My dual product goal was to validate the
+          natural-language-to-calendar loop quickly and build hands-on fluency in AI prototyping before committing to
+          native Android development.
+        </p>
+      </section>
+
+      <!-- 2. WIREFRAME -->
+      <section class="case-section fade-up">
+        <h2>Product Vision &amp; Wireframe</h2>
+        <p>
+          Before writing code, I created low-fidelity wireframes in Balsamiq to map the target end-state experience for
+          Max. Rather than treating chat as a standalone text box, the layout paired conversational input side-by-side
+          with a live calendar canvas so users could immediately verify created or modified events.
+        </p>
+        <ul class="bullet-list">
+          <li><strong>Continuous Voice Input (Live Mic):</strong> Modeled after hands-free conversational assistants so
+            users could speak scheduling intent naturally.</li>
+          <li><strong>Context-Aware Live Calendar:</strong> Designed to dynamically zoom into queried days or newly
+            created events while keeping surrounding slots visible.</li>
+          <li><strong>Collapsible Chat Toggle:</strong> Allowed users to collapse the conversation pane and expand the
+            calendar to full screen when reviewing their week.</li>
+        </ul>
+
+        <div class="case-img-wrapper">
+          <img src="images/wireframe.png"
+            alt="Max wireframe — Balsamiq low-fidelity prototype illustrating the target split-view product vision"
+            class="case-img" />
+          <div class="case-caption">Balsamiq wireframe — defining the target split-view UX, Live Mic flow, and dynamic
+            calendar confirmation.</div>
+        </div>
+      </section>
+
+      <!-- 3. ARCHITECTURE -->
+      <section class="case-section fade-up">
+        <h2>System Architecture &amp; Technical Trade-offs</h2>
+        <p>
+          To take Max from wireframe to an interactive MVP without engineering overhead, I designed a modular four-layer
+          architecture balancing speed of iteration with real calendar reliability:
+        </p>
+
+        <div class="feature-grid">
+          <div class="feature-item">
+            <div class="feature-text">
+              <strong>LLM Function Calling over Brittle Rules</strong>
+              <span>Used Google Gemini 2.5 to extract intent, relative dates ("next Thursday"), and missing parameters
+                conversationally instead of hard-coding rigid command patterns.</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-text">
+              <strong>Pre-Booking Conflict Validation</strong>
+              <span>Inserted a Calendar Service Handler between the LLM and API execution to check busy/free slots and
+                surface conflicts before committing events.</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-text">
+              <strong>Rapid Python MVP via Streamlit</strong>
+              <span>Chose Streamlit + Session State to pair a chat interface with an embedded Google Calendar display in
+                a single deployable stack.</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-text">
+              <strong>Auth Design vs. Frictionless Demo</strong>
+              <span>Architected around Google OAuth 2.0 for personal calendars, while wiring the public prototype to a
+                Google service account so reviewers can test flows immediately without OAuth login gates.</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>MVP Stack</h3>
+        <div class="tech-stack">
+          <span class="tech-pill"><span class="tech-pill-label">Frontend:</span> Streamlit</span>
+          <span class="tech-pill"><span class="tech-pill-label">AI:</span> Google Gemini 2.5</span>
+          <span class="tech-pill"><span class="tech-pill-label">API:</span> Google Calendar API / OAuth 2.0</span>
+          <span class="tech-pill"><span class="tech-pill-label">Deploy:</span> Streamlit Cloud</span>
+        </div>
+
+        <div class="case-img-wrapper">
+          <img src="images/architecture.png"
+            alt="Max Technical Architecture — layered system diagram showing UI, application logic, Gemini AI, and Calendar API flow"
+            class="case-img" />
+          <div class="case-caption">System architecture — separating UI state, LLM intent extraction, conflict
+            validation, and Calendar API execution.</div>
+        </div>
+      </section>
+
+      <!-- 4. FINAL UI & OUTCOME -->
+      <section class="case-section fade-up">
+        <h2>MVP Prototype Result &amp; Outcome</h2>
+        <p>
+          The shipped Streamlit prototype validates the core scheduling loop end to end: users type natural requests,
+          Max asks clarifying follow-ups when details like time are missing, checks existing availability, and updates
+          the embedded Google Calendar view on the right.
+        </p>
+
+        <div class="example-block">
+          <p>Conversational Flows Supported in Prototype:</p>
+          <ul>
+            <li>"Create event for breakfast for next week" → multi-turn clarification on day &amp; time</li>
+            <li>"What do I have scheduled for tomorrow?" → natural-language schedule lookup</li>
+            <li>"Move the team meeting to Friday at 10 AM" → conflict check &amp; update</li>
+            <li>"Delete the canceled project review" → event lookup &amp; removal</li>
+          </ul>
+        </div>
+
+        <div class="case-img-wrapper">
+          <img src="images/screenshot.png"
+            alt="Max Streamlit MVP prototype showing multi-turn conversational scheduling alongside a live Google Calendar week view"
+            class="case-img" />
+          <div class="case-caption">Shipped Streamlit MVP — handling multi-turn clarification, imperfect phrasing, and
+            real-time calendar placement.</div>
+        </div>
+
+        <h3>Outcome &amp; Validation</h3>
+        <p>
+          In informal benchmark checks with myself and colleagues comparing Max against standard manual calendar form
+          entry, scheduling speed improved substantially once multi-field dropdown navigation was replaced by a single
+          conversational prompt.
+        </p>
+
+        <div class="grid-3col">
+          <div class="metric-card">
+            <div class="metric-val">~70%</div>
+            <div class="metric-lbl">Est. time saved in informal colleague trials</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">1 Prompt</div>
+            <div class="metric-lbl">Replaces multi-dropdown form entry</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">0 Logins</div>
+            <div class="metric-lbl">Open sandbox testing via service account</div>
+          </div>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-card">
+            <h4>Validated Value</h4>
+            <ul>
+              <li><strong>Faster capture:</strong> Eliminated repetitive date/time picker taps for routine bookings</li>
+              <li><strong>Ambiguity handling:</strong> Multi-turn follow-ups handled incomplete prompts and typos
+                gracefully</li>
+              <li><strong>Side-by-side trust:</strong> Live visual calendar feedback eliminated anxiety over where AI
+                placed events</li>
+            </ul>
+          </div>
+          <div class="impact-card">
+            <h4>Prototype Learnings</h4>
+            <ul>
+              <li><strong>Context matters:</strong> Explicit timezone selection and "today" anchors were critical for
+                accurate relative dates</li>
+              <li><strong>Prompt guardrails:</strong> Reliable JSON/tool calls required strict schema validation before
+                hitting Calendar APIs</li>
+              <li><strong>OAuth friction:</strong> Unverified Google OAuth restricts external testing, making a
+                sandboxed demo essential</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. FUTURE ENHANCEMENTS & SUNSET -->
+      <section class="case-section fade-up">
+        <h2>Future Enhancements &amp; Sunset Decision</h2>
+        <p>
+          While the prototype validated demand for conversational scheduling, moving from an MVP to the full target
+          vision outlined in the wireframes surfaced a broader roadmap of capabilities:
+        </p>
+
+        <ul class="roadmap-list">
+          <li><span class="roadmap-check"></span> Voice-first mobile UX (Live Mic) tailored for on-the-go Android
+            scheduling</li>
+          <li><span class="roadmap-check"></span> Multi-calendar support across personal and work accounts</li>
+          <li><span class="roadmap-check"></span> Smart time-slot suggestions based on schedule density and preferences
+          </li>
+          <li><span class="roadmap-check"></span> Meeting room booking and attendee availability coordination</li>
+          <li><span class="roadmap-check"></span> Recurring event templates and cross-tool productivity integrations
+          </li>
+        </ul>
+
+        <div class="sunset-callout">
+          <h3>Sunset</h3>
+          <p>
+            It finally happened! On <strong>October 3, 2024</strong>, Google announced <a
+              href="https://blog.google/products-and-platforms/products/gemini/gemini-live-extensions-language-expansion/"
+              target="_blank" rel="noopener noreferrer">Gemini Live expansion alongside native Extensions for Google
+              Calendar, Tasks, and Keep on Android</a>. This brought first-party, OS-level natural language calendar
+            actions directly to Android devices.
+          </p>
+          <p>
+            With Google's native distribution and system-level integrations directly solving the scheduling friction Max
+            targeted, building a standalone third-party assistant wrapper no longer presented a defensible product moat.
+          </p>
+        </div>
+      </section>
+
     </div>
   </main>
 
   <footer>
-    <div class="container">
+    <div class="case-container">
       <p>
-        Crafted by <a href="https://www.linkedin.com/in/leellokesh/" target="_blank" rel="noopener noreferrer">Lokesh Leel</a>
+        Crafted by <a href="https://www.linkedin.com/in/leellokesh/" target="_blank" rel="noopener noreferrer">Lokesh
+          Leel</a>
         &nbsp;·&nbsp;
         <a href="mailto:hello@lokeshleel.space">hello@lokeshleel.space</a>
       </p>
     </div>
   </footer>
 </body>
+
 </html>

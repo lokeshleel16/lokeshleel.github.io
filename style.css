@@ -6,15 +6,15 @@
 }
 
 :root {
-  --bg:           #0d0d0d;
-  --surface:      #161616;
-  --surface-hover:#1e1e1e;
-  --border:       #252525;
-  --accent:       #6c63ff;
-  --accent-dim:   rgba(108, 99, 255, 0.12);
-  --text-primary: #f0f0f0;
-  --text-secondary: #888;
-  --text-muted:   #555;
+  --bg:           #ffffff;
+  --surface:      #f0f7fa;
+  --surface-hover:#e2f0f5;
+  --border:       #cce4ed;
+  --accent:       #0b8faf;
+  --accent-dim:   rgba(11, 143, 175, 0.10);
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a6274;
+  --text-muted:   #7a96a8;
 
   --space-xs:  0.5rem;
   --space-sm:  1rem;
@@ -99,8 +99,8 @@ section + section {
 
 /* ===== HERO ===== */
 #hero {
-  padding-top: calc(var(--space-xl) * 1.4);
-  padding-bottom: var(--space-xl);
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
   border-top: none;
 }
 
@@ -112,7 +112,7 @@ section + section {
   text-transform: uppercase;
   color: var(--accent);
   background: var(--accent-dim);
-  border: 1px solid rgba(108, 99, 255, 0.25);
+  border: 1px solid rgba(11, 143, 175, 0.25);
   border-radius: 999px;
   padding: 0.3rem 0.85rem;
   margin-bottom: var(--space-md);
@@ -128,7 +128,7 @@ section + section {
 }
 
 .hero-name span {
-  color: var(--accent);
+  color: inherit;
 }
 
 .hero-bio {
@@ -178,12 +178,6 @@ section + section {
   gap: var(--space-sm);
 }
 
-@media (min-width: 560px) {
-  .card-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 .card {
   display: block;
   text-decoration: none;
@@ -197,7 +191,7 @@ section + section {
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: rgba(108, 99, 255, 0.35);
+  border-color: rgba(11, 143, 175, 0.35);
   background: var(--surface-hover);
 }
 
@@ -289,7 +283,7 @@ section + section {
 
 .case-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(108, 99, 255, 0.35);
+  border-color: rgba(11, 143, 175, 0.35);
   background: var(--surface-hover);
 }
 
@@ -417,5 +411,236 @@ footer a:hover {
 
   .case-num {
     font-size: 1.4rem;
+  }
+}
+
+
+/* ===== SPLIT VIEW LAYOUT ===== */
+#split-wrapper {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+#home-panel {
+  flex: 1;
+  min-width: 0;
+  transition: flex 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#detail-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  opacity: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease;
+  z-index: 100;
+}
+
+/* When split is open */
+.split-open #home-panel {
+  flex: 0 0 510px;
+  max-width: 510px;
+  overflow-y: auto;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.split-open #detail-panel {
+  width: calc(100% - 510px);
+  opacity: 1;
+}
+
+/* Compact the home panel in sidebar mode */
+.split-open #home-panel .container {
+  max-width: 100%;
+  padding: 0 var(--space-sm);
+}
+
+.split-open #home-panel #hero {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-md);
+}
+
+.split-open #home-panel .hero-name {
+  font-size: 1.6rem;
+}
+
+.split-open #home-panel .hero-bio {
+  font-size: 0.88rem;
+  margin-bottom: var(--space-sm);
+}
+
+.split-open #home-panel .social-links {
+  gap: 0.5rem;
+}
+
+.split-open #home-panel .social-link {
+  font-size: 0.78rem;
+  padding: 0.35rem 0.75rem;
+}
+
+.split-open #home-panel .social-link svg {
+  width: 12px;
+  height: 12px;
+}
+
+.split-open #home-panel .section-label {
+  font-size: 0.65rem;
+}
+
+.split-open #home-panel .section-title {
+  font-size: 1.15rem;
+  margin-bottom: var(--space-sm);
+}
+
+.split-open #home-panel section {
+  padding: var(--space-md) 0;
+}
+
+/* Cards compact in sidebar */
+.split-open #home-panel .card-grid {
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.split-open #home-panel .card {
+  padding: var(--space-sm);
+}
+
+.split-open #home-panel .card-tag {
+  font-size: 0.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.split-open #home-panel .card-title {
+  font-size: 0.88rem;
+  margin-bottom: 0.25rem;
+}
+
+.split-open #home-panel .card-desc {
+  display: none;
+}
+
+.split-open #home-panel .chip-row {
+  display: none;
+}
+
+.split-open #home-panel .card-link {
+  font-size: 0.75rem;
+}
+
+/* Case cards compact */
+.split-open #home-panel .case-card {
+  padding: var(--space-sm);
+  gap: var(--space-sm);
+}
+
+.split-open #home-panel .case-num {
+  font-size: 1.2rem;
+  min-width: 1.8rem;
+}
+
+.split-open #home-panel .case-title {
+  font-size: 0.88rem;
+  margin-bottom: 0.2rem;
+}
+
+.split-open #home-panel .case-teaser {
+  display: none;
+}
+
+/* Active card highlight */
+.split-link.split-active {
+  border-color: var(--accent) !important;
+  background: var(--accent-dim) !important;
+  transform: none !important;
+}
+
+/* Compact footer in sidebar */
+.split-open #home-panel footer {
+  padding: var(--space-sm) 0;
+  font-size: 0.72rem;
+}
+
+/* Detail panel header (close button) */
+#detail-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+#detail-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: inherit;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+
+#detail-close:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+#detail-content {
+  padding: 0 1.5rem 3rem;
+}
+
+/* Loading spinner */
+.detail-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 0;
+}
+
+.detail-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Mobile: hide split, stay normal */
+@media (max-width: 899px) {
+  #detail-panel {
+    display: none !important;
+  }
+  .split-open #home-panel {
+    flex: 1;
+    max-width: 100%;
+    overflow: visible;
+    height: auto;
+    position: static;
   }
 }
